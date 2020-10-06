@@ -1,0 +1,19 @@
+.bloc {
+    text-align: center;
+    width: 600px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px black;
+    margin: 20px auto;
+}
+
+.valider {
+    text-align: right;
+}
+
+.container {
+    width: 700px;
+    border-style: inset;
+    box-shadow: 0px 0px 5px black;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
