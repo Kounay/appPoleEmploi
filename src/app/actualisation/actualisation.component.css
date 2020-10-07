@@ -4,7 +4,7 @@ div {
 
 #entete {
     width: 920px;
-    color: red; 
+    color: red;
     font-size: 1.5em;
     font: normal 75%, Arial,Helvetica,sans-serif;
     border-bottom: 1px solid #EC7F8F;
@@ -112,4 +112,12 @@ h3 {
 
 ul {
     padding-left: 16px;
+}
+
+.error-msg{
+  color: red;
+  text-align: center;
+  background: #ffd8d8;
+  padding: 14px;
+  width: 100%;
 }

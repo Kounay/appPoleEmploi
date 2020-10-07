@@ -1,24 +1,37 @@
 <div style="width: 80%; margin: auto;">
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut nisi id diam fermentum accumsan. Donec scelerisque velit ac dui cursus facilisis. Nulla lobortis mauris libero, vel ullamcorper neque consequat ut. Ut viverra turpis felis, eget porttitor lacus tincidunt in. Donec vulputate dui nec magna maximus convallis. Curabitur turpis libero, ornare sed placerat ac, elementum nec diam. Duis bibendum varius lacus, ut egestas ipsum luctus vitae.
-        Quisque posuere sapien quis dignissim dapibus. Integer eget est et justo dignissim efficitur. Nam laoreet dui porta orci porta mattis. Sed eros diam, rhoncus et massa eget, porttitor aliquam lorem. Nam ut tristique nunc. Vestibulum lacus augue, eleifend et metus non, vestibulum vestibulum quam. Etiam pretium ligula est, eget laoreet est accumsan et.
-    </p>
-    <hr>
-    <table style="margin: auto;">
-        <tr>
-            <td>Actualisation</td>
-            <td>Demande d'allocation</td>
-            <td>Visibilité du CV</td>
-        </tr>
-        <tr>
-            <td><a routerLink="actualisation">Actualisation classique</a></td>
-            <td><a href="#">#</a></td>
-            <td><a href="#">#</a></td>
-        </tr>
-        <tr>
-            <td>Actualisation avec formation</td>
-            <td><a href="#">#</a></td>
-            <td><a href="#">#</a></td>
-        </tr>
-    </table>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut nisi id diam fermentum accumsan. Donec scelerisque
+    velit ac dui cursus facilisis. Nulla lobortis mauris libero, vel ullamcorper neque consequat ut. Ut viverra turpis
+    felis, eget porttitor lacus tincidunt in. Donec vulputate dui nec magna maximus convallis. Curabitur turpis libero,
+    ornare sed placerat ac, elementum nec diam. Duis bibendum varius lacus, ut egestas ipsum luctus vitae.
+    Quisque posuere sapien quis dignissim dapibus. Integer eget est et justo dignissim efficitur. Nam laoreet dui porta
+    orci porta mattis. Sed eros diam, rhoncus et massa eget, porttitor aliquam lorem. Nam ut tristique nunc. Vestibulum
+    lacus augue, eleifend et metus non, vestibulum vestibulum quam. Etiam pretium ligula est, eget laoreet est accumsan
+    et.
+  </p>
+  <hr>
+  <table style="margin: auto;">
+    <tr>
+      <td>Actualisation</td>
+      <td>Demande d'allocation</td>
+      <td>Visibilité du CV</td>
+    </tr>
+    <tr>
+      <td><a routerLink="actualisation">Actualisation classique</a></td>
+      <td><a href="#">#</a></td>
+      <td><a href="#">#</a></td>
+    </tr>
+    <tr>
+      <td>Actualisation avec formation</td>
+      <td><a href="#">#</a></td>
+      <td><a href="#">#</a></td>
+    </tr>
+  </table>
+
+  <table style="margin: auto;">
+    <tr *ngFor="let model of modelsActua">
+        <td> Modeles d'actualisation</td>
+        <td>{{ model.nom }} {{ model.prenom }}</td>
+    </tr>
+  </table>
 </div>

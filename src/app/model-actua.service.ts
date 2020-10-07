@@ -1,17 +1,19 @@
+import { IModelActua } from './modelActua';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModelActuaService {
+  // tslint:disable-next-line: variable-name
+  private _url = '/assets/data/modelActua.json';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getModelActua() {
-    return [
-      { id: 1, nom: "Martine", formation: "non", arretMaladie: "non", congeMater: "non", pensionRetraite: "non", pensionInvalidite: "non", rechercheEmploi: "non"},
-      { id: 1, nom: "Jack", formation: "non", arretMaladie: "non", congeMater: "non", pensionRetraite: "non", pensionInvalidite: "non", rechercheEmploi: "non"},
-      { id: 1, nom: "Jean-Marie", formation: "non", arretMaladie: "oui", congeMater: "non", pensionRetraite: "non", pensionInvalidite: "non", rechercheEmploi: "non"}
-    ];
+  // tslint:disable-next-line: typedef
+  getModelActua(): Observable<IModelActua[]> {
+    return this.http.get<IModelActua[]>(this._url);
   }
 }

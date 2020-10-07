@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModelActuaService } from '../model-actua.service';
+import { Router } from '@angular/router';
+import { constructor } from 'typescript';
+import { Key } from 'protractor';
 
 @Component({
   selector: 'app-actualisation',
@@ -8,38 +11,49 @@ import { ModelActuaService } from '../model-actua.service';
   styleUrls: ['./actualisation.component.css']
 })
 export class ActualisationComponent implements OnInit {
+
+  constructor(private router: Router) {}
+
   actuaForm: FormGroup;
-
-  constructor(){}
-
-  public modelesActualisation;
+  isFormSubmitted = false;
 
   public date = Date.now();
 
+
   formationOption = [
-    {key: 'yes', label: 'Oui'},
-    {key: 'no', label: 'non'},
+    {key: true, label: 'Oui', checked: false},
+    {key: false, label: 'Non', checked: false},
   ];
 
-//  Pour le choix des Modele d'actualisation a mettre en place plus tard dans ACCUEIL
-//  constructor(private _modelActuaService: ModelActuaService) { }
-
+  // tslint:disable-next-line: typedef
   ngOnInit() {
-
-    /**Appel de la fonction getModelActua permettant de récupérer la liste des modèles d'actualisation (A modif) */
-  //  this.modelesActualisation = this._modelActuaService.getModelActua();
-    this.date;
+    // Setting default selection in FormControl
+    let getCheckedRadio = null;
+    this.formationOption.forEach(o => {
+      if (o.checked) {
+        getCheckedRadio = o.key;
+      }
+    });
 
     this.actuaForm = new FormGroup({
-      formation: new FormControl(),
+      formation: new FormControl(null, [Validators.required]),
     });
   }
 
-  ngSubmit (){
-    const value = this.actuaForm.get('yes').value;
+  // tslint:disable-next-line: typedef
+  valider(){
+    this.isFormSubmitted = true;
+    if (!this.actuaForm.valid) {
+      console.log('Selectionnez une valeur');
+      return false;
+    } else {
+      console.log(this.actuaForm.value);
+      this.router.navigate(['actualisation/suite']);
+    }
   }
-
-  valider (){
-    
+  // tslint:disable-next-line: typedef
+  onReset(){
+    this.isFormSubmitted = false;
+    this.actuaForm.reset();
   }
 }
