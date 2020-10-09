@@ -12,11 +12,8 @@ import { Key } from 'protractor';
 })
 export class ActualisationComponent implements OnInit {
 
-  constructor(private router: Router) {}
-
   actuaForm: FormGroup;
   isFormSubmitted = false;
-
   public date = Date.now();
 
 
@@ -41,19 +38,19 @@ export class ActualisationComponent implements OnInit {
   }
 
   // tslint:disable-next-line: typedef
-  valider(){
+  onSubmit(){
     this.isFormSubmitted = true;
+    console.log(this.actuaForm.value);
     if (!this.actuaForm.valid) {
-      console.log('Selectionnez une valeur');
+      console.log('Please provide all the required values!');
       return false;
     } else {
       console.log(this.actuaForm.value);
-      this.router.navigate(['actualisation/suite']);
+      // this.router.navigate(['actualisation/suite']);
     }
   }
   // tslint:disable-next-line: typedef
   onReset(){
-    this.isFormSubmitted = false;
     this.actuaForm.reset();
   }
 }

@@ -3,7 +3,7 @@
     <h1>Déclarez votre situation mensuelle</h1>
   </div>
 
-  <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['formation'].errors?.required">
+  <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['formation'].errors">
     <p>Champs invalide (Lien d'aide en bas de page)</p>
     <p>Veuillez relire l'énoncé</p>
   </span>
@@ -29,7 +29,7 @@
           d’emploi, suppression d’une partie ou de la totalité de votre allocation, pénalités administrative, etc.).</p>
 
         <h3 ng-app>Au {{date | date:'dd/MM/yyyy'}}</h3>
-        <form [formGroup]="actuaForm" (ngSubmit)="valider()">
+        <form [formGroup]="actuaForm" (ngSubmit)="onSubmit()">
           <div class="bloc">
             <div class="label">
               <span>Etes-vous inscrit à une session de formation<br>
@@ -46,7 +46,7 @@
             <span class="stop"></span>
           </div>
           <div class="valider">
-            <button (click)="onReset()">Abandonner</button>
+            <button type="reset">Abandonner</button>
             <button type="submit">Valider</button>
           </div>
         </form>

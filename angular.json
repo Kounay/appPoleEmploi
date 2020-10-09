@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "pole-emploi-app"
+    }
+  },
+  "defaultProject": "pole-emploi-app",
+  "cli": {
+    "analytics": false
+  }
 }

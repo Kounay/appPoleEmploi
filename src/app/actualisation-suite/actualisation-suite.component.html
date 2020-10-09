@@ -1,68 +1,130 @@
-4524
-<div class="container">
-      <form ngNoForm>
-        <div class="bloc">
-            <p>Avous-vous été en stage ?</p>
-            <input type="radio" id="yes" name="stage" value="oui">
-            <label for="radioY">Oui</label>
-            <input type="radio" id="no" name="stage" value="non">
-            <label for="radioN">Non</label>
-        </div>
+<div id="wrapper">
+  <div id="entete">
+    <h1>Déclarez votre situation mensuelle</h1>
+  </div>
 
-        <div class="bloc">
-        <p>Avez-vous été en arrêt maladie ?</p>
-        <input type="radio" id="yes" name="maladie" value="oui">
-        <label for="radioY">Oui</label>
+  <div id="container">
+    <div id="primaryBloc">
+      <p class="labelChamp">Tous les champs sont obligatoires.</p>
+      <div id="mainBloc">
+        <h3 ng-app>Au {{date | date:'dd/MM/yyyy'}}</h3>
+        <p>Cochez les cases correspondant à votre cas</p>
+        <form [formGroup]="actuaForm" (ngSubmit)="onSubmit()">
 
-        <input type="radio" id="no" name="maladie" value="non">
-        <label for="radioN">Non</label>
-        </div>
+          <div class="bloc">
+            <div class="label">
+              <span>Avez-vous travaillé ou exercé une activité non salariée ?
+                (créateur ou repreneur d’entreprise, entrepreneur...)</span>
+            </div>
 
-        <div class="bloc">
-        <p>avez-vous été en congé maternité ?</p>
-        <input type="radio" id="yes" name="congeM" value="oui">
-        <label for="radioY">Oui</label>
+            <div class="radio" *ngFor="let option of formationOption">
+              <label>
+                <input type="radio" formControlName="travail" [value]="option.key" [checked]="option.checked">
+                {{ option.label }}
+              </label>
+            </div>
+            <span class="stop"></span>
+          </div>
 
-        <input type="radio" id="no" name="congeM" value="non">
-        <label for="radioN">Non</label>
-        </div>
+          <div class="bloc">
+            <div class="label">
+              <span>Avous-vous été en stage ?</span>
+            </div>
 
-        <div class="bloc">
-        <p>Percevez-vous une nouvelle pension retraite ?</p>
-        <input type="radio" id="yes" name="retraite" value="oui">
-        <label for="radioY">Oui</label>
+            <div class="radio" *ngFor="let option of formationOption">
+              <label>
+                <input type="radio" formControlName="stage" [value]="option.key" [checked]="option.checked">
+                {{ option.label }}
+              </label>
+            </div>
 
-        <input type="radio" id="no" name="retraite" value="non">
-        <label for="radioN">Non</label>
-        </div>
+            <span class="stop"></span>
+          </div>
 
-        <div class="bloc">
-        <p>Percevez-vous une nouvelle pension <br>
-        d'invalidité ou de 2ième ou 3ième catégorie</p>
-        <input type="radio" id="yes" name="invalidite" value="oui">
-        <label for="radioY">Oui</label>
+          <div class="bloc">
+            <div class="label">
+              <span>Avez-vous été en arrêt maladie ?</span>
+            </div>
 
-        <input type="radio" id="no" name="invalidite" value="non">
-        <label for="radioN">Non</label>
-        </div>
+            <div class="radio" *ngFor="let option of formationOption">
+              <label>
+                <input type="radio" formControlName="arretMaladie" [value]="option.key" [checked]="option.checked">
+                {{ option.label }}
+              </label>
+            </div>
 
-        <div class="bloc">
-        <p>Etes-vous toujours en recherche d'emploi ?</p>
-        <input type="radio" id="yes" name="rechercheE" value="oui">
-        <label for="radioY">Oui</label>
+            <span class="stop"></span>
+          </div>
 
-        <input type="radio" id="no" name="rechercheE" value="non">
-        <label for="radioN">Non</label>
-        </div>
+          <div class="bloc">
+            <div class="label">
+              <span>Percevez-vous une nouvelle pension retraite ?</span>
+            </div>
 
-        <div class="valider">
-            <button type="submit">Abandonnner</button>
+            <div class="radio" *ngFor="let option of formationOption">
+              <label>
+                <input type="radio" formControlName="pensionRetraite" [value]="option.key" [checked]="option.checked">
+                {{ option.label }}
+              </label>
+            </div>
+
+            <span class="stop"></span>
+          </div>
+
+          <div class="bloc">
+            <div class="label">
+              <span>Percevez-vous une nouvelle pension
+                d'invalidité de 2ème ou 3ème catégorie ?</span>
+            </div>
+
+            <div class="radio" *ngFor="let option of formationOption">
+              <label>
+                <input type="radio" formControlName="pensionInvalidite" [value]="option.key" [checked]="option.checked">
+                {{ option.label }}
+              </label>
+            </div>
+
+            <span class="stop"></span>
+          </div>
+
+          <div class="bloc">
+            <div class="label">
+              <span>Etes-vous toujours à la recherche d'un emploi ?</span>
+            </div>
+
+            <div class="radio" *ngFor="let option of formationOption">
+              <label>
+                <input type="radio" formControlName="rechercheEmploi" [value]="option.key" [checked]="option.checked">
+                {{ option.label }}
+              </label>
+            </div>
+
+            <span class="stop"></span>
+          </div>
+
+          <div class="valider">
+            <button type="reset">Abandonner</button>
             <button type="submit">Valider</button>
-        </div>
-    </form>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+
+    <div class="secondaryBloc">
+      <span>Information</span>
+    </div>
+
+    <span class="stop"></span>
+
+  </div>
+
 </div>
 
+
 <footer style="text-align: center; margin-bottom: 20px;">
-    <hr>
-    Autres aides ....
+  <hr>
+  Autres aides ....
 </footer>
