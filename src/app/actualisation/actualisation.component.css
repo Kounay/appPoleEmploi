@@ -2,6 +2,12 @@ div {
     display: block;
 }
 
+#wrapper {
+  width: 950px;
+  margin: auto;
+  font: normal 75%, Arial,Helvetica,sans-serif;
+}
+
 #entete {
     width: 920px;
     color: red;
