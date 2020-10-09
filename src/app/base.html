@@ -1,68 +1,65 @@
-
-
-
 <div id="wrapper">
-    <div id="entete">
-      <h1>Déclarez votre situation mensuelle</h1>
-    </div>
-  
-    <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['formation'].errors">
-      <p>Champs invalide (Lien d'aide en bas de page)</p>
-      <p>Veuillez relire l'énoncé</p>
-    </span>
-    <div id="container">
-      <div id="primaryBloc">
-        <p class="labelChamp">Tous les champs sont obligatoires.</p>
-        <div id="mainBloc">
-          <p>Actualiser votre situation tous les mois permet :</p>
-  
-          <ul>
-            <li>La mise à jour de votre situation</li>
-            <li>De rester inscrit</li>
-            <li>Le paiement de vos allocations si vous en avez</li>
-          </ul>
-  
-          <p><b>Vous devez répondre à toutes les questions posées et valider le message final qui confirmera
-              l’enregistrement de votre déclaration.</b></p>
-  
-          <p>Par cette action, vous autorisez Pôle Emploi à conserver votre déclaration sur un support informatique, sous
-            réserve qu'une copie fidèle et durable soit produite en cas de besoin.</p>
-  
-          <p><b>Attention, toute fausse déclaration vous expose à des sanctions</b> (radiation de la liste de demandeurs
-            d’emploi, suppression d’une partie ou de la totalité de votre allocation, pénalités administrative, etc.).</p>
-  
-          <h3 ng-app>Au {{date | date:'dd/MM/yyyy'}}</h3>
-          <form [formGroup]="actuaForm" (ngSubmit)="onSubmit()">
-            <div class="bloc">
-              <div class="label">
-                <span>Etes-vous inscrit à une session de formation<br>
-                  ou suivez-vous une formation ?</span>
-              </div>
-  
-              <div class="radio" *ngFor="let option of formationOption">
-                <label>
-                  <input type="radio" formControlName="formation" [value]="option.key" [checked]="option.checked">
-                  {{ option.label }}
-                </label>
-              </div>
-  
-              <span class="stop"></span>
-            </div>
-            <div class="valider">
-              <button type="reset">Abandonner</button>
-              <button type="submit">Valider</button>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="secondaryBloc">
-        <span>Information</span>
-      </div>
-      <span class="stop"></span>
-    </div>
+  <div id="entete">
+    <h1>Déclarez votre situation mensuelle</h1>
   </div>
-  <footer style="text-align: center; margin-bottom: 20px;">
-    <hr>
-    Autres aides ....
-  </footer>
-  
+
+  <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['formation'].errors">
+    <p>Champs invalide (Lien d'aide en bas de page)</p>
+    <p>Veuillez relire l'énoncé</p>
+  </span>
+  <div id="container">
+    <div id="primaryBloc">
+      <p class="labelChamp">Tous les champs sont obligatoires.</p>
+      <div id="mainBloc">
+        <p>Actualiser votre situation tous les mois permet :</p>
+
+        <ul>
+          <li>La mise à jour de votre situation</li>
+          <li>De rester inscrit</li>
+          <li>Le paiement de vos allocations si vous en avez</li>
+        </ul>
+
+        <p><b>Vous devez répondre à toutes les questions posées et valider le message final qui confirmera
+            l’enregistrement de votre déclaration.</b></p>
+
+        <p>Par cette action, vous autorisez Pôle Emploi à conserver votre déclaration sur un support informatique, sous
+          réserve qu'une copie fidèle et durable soit produite en cas de besoin.</p>
+
+        <p><b>Attention, toute fausse déclaration vous expose à des sanctions</b> (radiation de la liste de demandeurs
+          d’emploi, suppression d’une partie ou de la totalité de votre allocation, pénalités administrative, etc.).</p>
+
+        <h3 ng-app>Au {{date | date:'dd/MM/yyyy'}}</h3>
+
+        <form [formGroup]="actuaForm" (ngSubmit)="onSubmit()">
+          <div class="bloc">
+            <div class="label">
+              <span>Etes-vous inscrit à une session de formation<br>
+                ou suivez-vous une formation ?</span>
+            </div>
+
+            <div class="radio" *ngFor="let option of formationOption">
+              <label>
+                <input type="radio" formControlName="formation" [value]="option.key" [checked]="option.checked">
+                {{ option.label }}
+              </label>
+            </div>
+
+            <span class="stop"></span>
+          </div>
+          <div class="valider">
+            <button type="reset">Abandonner</button>
+            <button type="submit">Valider</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="secondaryBloc">
+      <span>Information</span>
+    </div>
+    <span class="stop"></span>
+  </div>
+</div>
+<footer style="text-align: center; margin-bottom: 20px;">
+  <hr>
+  Autres aides ....
+</footer>
