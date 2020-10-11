@@ -33,15 +33,26 @@
   margin-bottom: 0px;
 }
 
+#layout ::after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+
 #layout {
  padding-bottom: 30px;
  font: normal 75% Arial,Helvetica,sans-serif;
 }
 
+/* Premier Bloc */
+
 #premierBloc{
+  display: block;
+  float: left;
   width: 644px;
   line-height: 1.7;
-  list-style: none;
 }
 
 #note-formulaire {
@@ -51,7 +62,7 @@
   margin-bottom: 0px;
 }
 
-#parallel-unit {
+#premierBloc .parallel-unit {
   padding-right: 25px;
 }
 
@@ -67,19 +78,6 @@
 .group-set p {
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-ul {
-  padding-left: 16px;
-}
-
-h3 {
-  margin: 0px;
-  padding-top: 5px;
-  font-weight: bold;
-  color: #053f90;
-  text-shadow: 0 1px 0 #fff;
-  font-size: 14.004px;
 }
 
 .groupeSaisie {
@@ -123,6 +121,8 @@ h3 {
   padding: 0;
 }
 
+/* Fin du Premier Bloc */
+
 .stop {
   content: ".";
   visibility: hidden;
@@ -134,25 +134,96 @@ h3 {
   color: red;
   text-align: center;
   background: #ffd8d8;
-  padding: 14px;
+  padding: 10px;
   width: 100%;
-  }
+}
 
+ul {
+  padding-left: 16px;
+}
 
+h3 {
+  margin: 0px;
+  padding-top: 5px;
+  font-weight: bold;
+  color: #053f90;
+  text-shadow: 0 1px 0 #fff;
+  font-size: 14.004px;
+}
 
-
-
-
-
-
-
-
-
-
+/* Deuxième Bloc */
 #secondBloc {
   width: 276px;
   line-height: 1.7;
   display: block;
   float: left;
-
+  box-sizing: border-box;
+  color: #212529;
+  text-align: left;
 }
+
+#secondBloc .parallel-unit {
+  padding: 0 10px 0 7px;
+  margin: 0;
+  display: block;
+}
+
+.noheto {
+  margin: 20px 0;
+  padding: 0;
+  display: block;
+}
+
+.centrageImage {
+  background: #dbe7f5;
+  padding: 0 1px 13px 1px;
+  margin: 10px 10px 0 0;
+  box-shadow: 0 0 3px #5975a1;
+  border-radius: 10px;
+  display: block;
+}
+
+.centrageTexte {
+  padding: 20px;
+  margin: 0;
+  background: #FFF;
+  border: 1px solid #dbe7f5;
+  border-radius: 10px;
+  display: block;
+}
+.picto ::after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}
+
+.picto {
+  color: #00357E;
+  padding: 5px 0 10px 0;
+  margin: 0;
+  font-size: 1em;
+  font-weight: bold;
+  display: block;
+}
+
+.picto img {
+  display: block;
+  margin: 5px 10px 5px 0;
+  border: 1px solid #CCC;
+  float: left;
+}
+
+.picto span {
+  padding-top: 10px;
+  display: block;
+}
+
+.noheto h4 {
+  color: #00357E;
+  padding: 5px 0 10px 0;
+  font-size: 1em;
+}
+
+/* Fin du Deuxième Bloc */
