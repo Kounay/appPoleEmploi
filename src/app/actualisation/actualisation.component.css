@@ -121,6 +121,56 @@
   padding: 0;
 }
 
+/* Bouttons de validation */
+
+.validation {
+  display: block;
+}
+
+.validation ul {
+  float: right;
+}
+
+.validation li {
+  display: inline-block;
+  padding-right: 25px;
+}
+
+.btnValiderFond {
+  display: inline-block;
+  background-color: #204c8c;
+  border-radius: 3px;
+  height: 40px;
+  margin: 0;
+  box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.2) inset;
+  border-bottom: 1px solid #0f2342 !important;
+  border-top: 1px solid #2b5d96;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+    cursor: pointer;
+    line-height: 15px;
+    overflow: visible;
+    zoom: 1;
+    position: relative;
+    vertical-align: center;
+    border-style: none;
+}
+
+.btnValider {
+  color: white;
+  font: normal 75% Arial,Helvetica,sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  vertical-align: middle;
+
+  background: url(../../assets/icn_btn_arrow.png) no-repeat;
+  padding-left: 35px;
+  text-align: left;
+  height: 40px;
+  border-style: none;
+}
+
 /* Fin du Premier Bloc */
 
 .stop {
