@@ -1,129 +1,230 @@
 <div id="wrapper">
-  <div id="entete">
-    <h1>Déclarez votre situation mensuelle</h1>
-  </div>
+  <div id="pannel-central">
+    <div id="entete">
+      <h2>Déclarez votre situation mensuelle</h2>
+    </div>
+    <div id="layout">
 
-  <div id="container">
-    <div id="primaryBloc">
-      <p class="labelChamp">Tous les champs sont obligatoires.</p>
-      <div id="mainBloc">
-        <h3 ng-app>Au {{date | date:'dd/MM/yyyy'}}</h3>
-        <p>Cochez les cases correspondant à votre cas</p>
-        <form [formGroup]="actuaForm" (ngSubmit)="onSubmit()">
+      <div class="parallel-bloc">
+        <div id="premierBloc">
+          <p id="note-formulaire">Tous les champs sont obligatoires.</p>
+          <div class="parallel-unit">
+            <div class="group-set">
+              <div class="groupeText">
+                <h3>Au {{date | date:'dd/MM/yyyy'}}</h3>
+              </div>
 
-          <div class="bloc">
-            <div class="label">
-              <span>Avez-vous travaillé ou exercé une activité non salariée ?
-                (créateur ou repreneur d’entreprise, entrepreneur...)</span>
+              <form [formGroup]="actuaForm" (ngSubmit)="onSubmit()">
+                <!-- Section travail -->
+                <div class="sousGroupe">
+                  <div class="label">
+                    <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['travail'].errors">
+                      <p>Champs invalide (Lien d'aide en bas de page)</p>
+                      <p>Veuillez relire l'énoncé</p>
+                    </span>
+                    <span>Avez-vous travaillé ou exercé une activité non salariée ?<br>
+                      (créateur ou repreneur d’entreprise, entrepreneur...)</span>
+                  </div>
+
+                  <div class="radio-group">
+                    <div class="radio" *ngFor="let option of listOption">
+                      <label>
+                        <input type="radio" formControlName="travail" [value]="option.key"
+                          [checked]="option.checked">{{ option.label }}
+                      </label>
+                    </div>
+                  </div>
+                  <span class="stop"></span>
+                  <div *ngIf='visibiltyCas'>
+                    <span>Heures travaillées dans le mois</span>
+                    <input type="text" name="txtTravail">
+                    <span>heures</span>
+                    <span>Montant total de votre ou vos salaires bruts <b>réels ou estimés</b></span>
+                    <input type="text">
+                    <span>€</span>
+                  </div>
+                </div>
+
+                <!-- Section stage -->
+                <div class="sousGroupe">
+                  <div class="label">
+                    <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['stage'].errors">
+                      <p>Champs invalide (Lien d'aide en bas de page)</p>
+                      <p>Veuillez relire l'énoncé</p>
+                    </span>
+                    <span>Avous-vous été en stage ?</span>
+                  </div>
+
+                  <div class="radio-group">
+                    <div class="radio" *ngFor="let option of listOption">
+                      <label>
+                        <input type="radio" formControlName="stage" [value]="option.key"
+                          [checked]="option.checked">{{ option.label }}
+                      </label>
+                    </div>
+                  </div>
+                  <span class="stop"></span>
+                  <div *ngIf='visibiltyCas'>
+                    <span>Du</span>
+                    <input type="text" name="txtTravail">
+                    <span>Au</span>
+                    <input type="text">
+                  </div>
+                </div>
+
+                <!-- Section arrêt maladie -->
+                <div class="sousGroupe">
+                  <div class="label">
+                    <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['arretMaladie'].errors">
+                      <p>Champs invalide (Lien d'aide en bas de page)</p>
+                      <p>Veuillez relire l'énoncé</p>
+                    </span>
+                    <span>Avez-vous été en arrêt maladie ?</span>
+                  </div>
+
+                  <div class="radio-group">
+                    <div class="radio" *ngFor="let option of listOption">
+                      <label>
+                        <input type="radio" formControlName="arretMaladie" [value]="option.key"
+                          [checked]="option.checked">{{ option.label }}
+                      </label>
+                    </div>
+                  </div>
+                  <span class="stop"></span>
+                  <div *ngIf='visibiltyCas'>
+                    <span>Du</span>
+                    <input type="text" name="txtTravail">
+                    <span>Au</span>
+                    <input type="text">
+                  </div>
+                </div>
+
+                <!-- Section pension retraite -->
+                <div class="sousGroupe">
+                  <div class="label">
+                    <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['pensionRetraite'].errors">
+                      <p>Champs invalide (Lien d'aide en bas de page)</p>
+                      <p>Veuillez relire l'énoncé</p>
+                    </span>
+                    <span>Percevez-vous une nouvelle pension retraite ?</span>
+                  </div>
+
+                  <div class="radio-group">
+                    <div class="radio" *ngFor="let option of listOption">
+                      <label>
+                        <input type="radio" formControlName="pensionRetraite" [value]="option.key"
+                          [checked]="option.checked">{{ option.label }}
+                      </label>
+                    </div>
+                  </div>
+                  <span class="stop"></span>
+                  <div *ngIf='visibiltyCas'>
+                    <span>Depuis le </span>
+                    <input type="text">
+                  </div>
+                </div>
+
+                <!-- Section penstion d'invalidité -->
+                <div class="sousGroupe">
+                  <div class="label">
+                    <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['pensionInvalidite'].errors">
+                      <p>Champs invalide (Lien d'aide en bas de page)</p>
+                      <p>Veuillez relire l'énoncé</p>
+                    </span>
+                    <span>Percevez-vous une nouvelle pension
+                      d'invalidité de 2ème ou 3ème catégorie ?</span>
+                  </div>
+
+                  <div class="radio-group">
+                    <div class="radio" *ngFor="let option of listOption">
+                      <label>
+                        <input type="radio" formControlName="pensionInvalidite" [value]="option.key"
+                          [checked]="option.checked">{{ option.label }}
+                      </label>
+                    </div>
+                  </div>
+                  <span class="stop"></span>
+                  <div *ngIf='visibiltyCas'>
+                    <span>Depuis le </span>
+                    <input type="text">
+                  </div>
+                </div>
+
+                <!-- Section recherche d'emploi -->
+                <div class="sousGroupe">
+                  <div class="label">
+                    <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['rechercheEmploi'].errors">
+                      <p>Champs invalide (Lien d'aide en bas de page)</p>
+                      <p>Veuillez relire l'énoncé</p>
+                    </span>
+                    <span>Etes-vous toujours à la recherche d'un emploi ?</span>
+                  </div>
+
+                  <div class="radio-group">
+                    <div class="radio" *ngFor="let option of listOption">
+                      <label>
+                        <input type="radio" formControlName="rechercheEmploi" [value]="option.key"
+                          [checked]="option.checked">{{ option.label }}
+                      </label>
+                    </div>
+                  </div>
+                  <span class="stop"></span>
+                  <div *ngIf='visibiltyCas'>
+                    <span>Vous n'êtes plus à la recherche d'un emploi depuis le</span>
+                    <input type="text">
+                    <div class="radio" *ngFor="let option of optionRecherche">
+                      <label>
+                        <input type="radio" formControlName="rechercheEmploi" [value]="option.key">
+                        {{ option.label }}
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+              </form>
             </div>
-
-            <div class="radio" *ngFor="let option of formationOption">
-              <label>
-                <input type="radio" formControlName="travail" [value]="option.key" [checked]="option.checked">
-                {{ option.label }}
-              </label>
+            <div class="validation">
+              <ul>
+                <li><button type="reset">Abandonner</button></li>
+                <li>
+                  <span class="btnValiderFond">
+                    <button class="btnValider" type="submit">Valider</button>
+                  </span>
+                </li>
+              </ul>
             </div>
-            <span class="stop"></span>
           </div>
-
-          <div class="bloc">
-            <div class="label">
-              <span>Avous-vous été en stage ?</span>
+        </div>
+        <div id="secondBloc">
+          <div class="parallel-unit">
+            <div class="noheto">
+              <div class="centrageImage">
+                <div class="centrageTexte">
+                  <h4 class="picto">
+                    <img title alt src="../../assets/picto-information3137123175955441002.png">
+                    <span>Information</span>
+                  </h4>
+                  Afin de faciliter votre actualisation, vous pouvez vous munir des informations ou documents utiles à
+                  votre déclaration :
+                  <ul>
+                    <li>Bulletin de salaire</li>
+                    <li>Attestation employeur</li>
+                    <li>Justificatif de formation</li>
+                    <li>Notification de pension ...</li>
+                  </ul>
+                  <p>Dès la fin de votre actualisation, vous pourrez transmettre ces documents depuis votre espace
+                    personnel.</p>
+                  <a href="http://plml.fr/c/Ux33z" target="_blank">En savoir plus sur les changements de situations à
+                    déclarer</a>
+                </div>
+              </div>
             </div>
-
-            <div class="radio" *ngFor="let option of formationOption">
-              <label>
-                <input type="radio" formControlName="stage" [value]="option.key" [checked]="option.checked">
-                {{ option.label }}
-              </label>
-            </div>
-
-            <span class="stop"></span>
           </div>
-
-          <div class="bloc">
-            <div class="label">
-              <span>Avez-vous été en arrêt maladie ?</span>
-            </div>
-
-            <div class="radio" *ngFor="let option of formationOption">
-              <label>
-                <input type="radio" formControlName="arretMaladie" [value]="option.key" [checked]="option.checked">
-                {{ option.label }}
-              </label>
-            </div>
-
-            <span class="stop"></span>
-          </div>
-
-          <div class="bloc">
-            <div class="label">
-              <span>Percevez-vous une nouvelle pension retraite ?</span>
-            </div>
-
-            <div class="radio" *ngFor="let option of formationOption">
-              <label>
-                <input type="radio" formControlName="pensionRetraite" [value]="option.key" [checked]="option.checked">
-                {{ option.label }}
-              </label>
-            </div>
-
-            <span class="stop"></span>
-          </div>
-
-          <div class="bloc">
-            <div class="label">
-              <span>Percevez-vous une nouvelle pension
-                d'invalidité de 2ème ou 3ème catégorie ?</span>
-            </div>
-
-            <div class="radio" *ngFor="let option of formationOption">
-              <label>
-                <input type="radio" formControlName="pensionInvalidite" [value]="option.key" [checked]="option.checked">
-                {{ option.label }}
-              </label>
-            </div>
-
-            <span class="stop"></span>
-          </div>
-
-          <div class="bloc">
-            <div class="label">
-              <span>Etes-vous toujours à la recherche d'un emploi ?</span>
-            </div>
-
-            <div class="radio" *ngFor="let option of formationOption">
-              <label>
-                <input type="radio" formControlName="rechercheEmploi" [value]="option.key" [checked]="option.checked">
-                {{ option.label }}
-              </label>
-            </div>
-
-            <span class="stop"></span>
-          </div>
-
-          <div class="valider">
-            <button type="reset">Abandonner</button>
-            <button type="submit">Valider</button>
-          </div>
-
-        </form>
-
+        </div>
       </div>
     </div>
-
-
-    <div class="secondaryBloc">
-      <span>Information</span>
-    </div>
-
-    <span class="stop"></span>
-
   </div>
-
 </div>
-
-
 <footer style="text-align: center; margin-bottom: 20px;">
   <hr>
   Autres aides ....

@@ -11,15 +11,15 @@ import { Key } from 'protractor';
   styleUrls: ['./actualisation.component.css']
 })
 export class ActualisationComponent implements OnInit {
-
+  router = new Router();
   actuaForm: FormGroup;
   isFormSubmitted = false;
   public date = Date.now();
 
 
   formationOption = [
-    {key: true, label: 'Oui', checked: false},
-    {key: false, label: 'Non', checked: false},
+    { key: true, label: 'Oui', checked: false },
+    { key: false, label: 'Non', checked: false },
   ];
 
   // tslint:disable-next-line: typedef
@@ -38,7 +38,7 @@ export class ActualisationComponent implements OnInit {
   }
 
   // tslint:disable-next-line: typedef
-  onSubmit(){
+  onSubmit() {
     this.isFormSubmitted = true;
     console.log(this.actuaForm.value);
     if (!this.actuaForm.valid) {
@@ -46,11 +46,12 @@ export class ActualisationComponent implements OnInit {
       return false;
     } else {
       console.log(this.actuaForm.value);
-      // this.router.navigate(['actualisation/suite']);
     }
+
+    this.router.navigate(['actualisation/suite']);
   }
   // tslint:disable-next-line: typedef
-  onReset(){
+  onReset() {
     this.actuaForm.reset();
   }
 }
