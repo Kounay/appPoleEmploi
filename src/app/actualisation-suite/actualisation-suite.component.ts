@@ -12,32 +12,24 @@ import { constructor } from 'typescript';
 export class ActualisationSuiteComponent implements OnInit {
   actuaForm: FormGroup;
   public date = Date.now();
-  public datePremierJour = Date.prototype.getMonth() - 1;
-  isFormSubmitted = false;
-  constructor() { }
   visibiltyCas = true;
 
   listOption = [
-    {key: true, label: 'Oui', checked: false},
-    {key: false, label: 'Non', checked: false},
+    { key: true, label: 'Oui', checked: false },
+    { key: false, label: 'Non', checked: false },
   ];
 
   optionRecherche = [
-    {key: 1, label: 'Reprise du travail'},
-    {key: 2, label: 'Retraite'},
-    {key: 3, label: 'Autre'},
+    { key: 1, label: 'Reprise du travail' },
+    { key: 2, label: 'Retraite' },
+    { key: 3, label: 'Autre' },
   ];
   // tslint:disable-next-line: typedef
   ngOnInit() {
+    // tslint:disable-next-line: no-unused-expression
     this.visibiltyCas;
+    // tslint:disable-next-line: no-unused-expression
     this.optionRecherche;
-    // Setting default selection in FormControl
-    let getCheckedRadio = null;
-    this.listOption.forEach(o => {
-      if (o.checked) {
-        getCheckedRadio = o.key;
-      }
-    });
 
     this.actuaForm = new FormGroup({
       travail: new FormControl(null, [Validators.required]),
@@ -50,19 +42,10 @@ export class ActualisationSuiteComponent implements OnInit {
   }
 
   // tslint:disable-next-line: typedef
-  onSubmit(){
-    this.isFormSubmitted = true;
-    console.log(this.actuaForm.value);
-    if (!this.actuaForm.valid) {
-      console.log('Please provide all the required values!');
-      return false;
-    } else {
-      console.log(this.actuaForm.value);
-      // this.router.navigate(['actualisation/suite']);
-    }
+  onSubmit() {
   }
   // tslint:disable-next-line: typedef
-  onReset(){
+  onReset() {
     this.actuaForm.reset();
   }
 }

@@ -11,9 +11,9 @@ import { Key } from 'protractor';
   styleUrls: ['./actualisation.component.css']
 })
 export class ActualisationComponent implements OnInit {
-  router = new Router();
+
+  constructor(private router: Router) {}
   actuaForm: FormGroup;
-  isFormSubmitted = false;
   public date = Date.now();
 
 
@@ -24,14 +24,6 @@ export class ActualisationComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
-    // Setting default selection in FormControl
-    let getCheckedRadio = null;
-    this.formationOption.forEach(o => {
-      if (o.checked) {
-        getCheckedRadio = o.key;
-      }
-    });
-
     this.actuaForm = new FormGroup({
       formation: new FormControl(null, [Validators.required]),
     });
@@ -39,17 +31,9 @@ export class ActualisationComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   onSubmit() {
-    this.isFormSubmitted = true;
-    console.log(this.actuaForm.value);
-    if (!this.actuaForm.valid) {
-      console.log('Please provide all the required values!');
-      return false;
-    } else {
-      console.log(this.actuaForm.value);
-    }
-
     this.router.navigate(['actualisation/suite']);
   }
+
   // tslint:disable-next-line: typedef
   onReset() {
     this.actuaForm.reset();

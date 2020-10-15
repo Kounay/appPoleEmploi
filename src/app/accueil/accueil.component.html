@@ -10,28 +10,13 @@
     et.
   </p>
   <hr>
-  <table style="margin: auto;">
-    <tr>
-      <td>Actualisation</td>
-      <td>Demande d'allocation</td>
-      <td>Visibilité du CV</td>
-    </tr>
-    <tr>
-      <td><a routerLink="actualisation">Actualisation classique</a></td>
-      <td><a routerLink="actualisation/suite">#</a></td>
-      <td><a href="#">#</a></td>
-    </tr>
-    <tr>
-      <td>Actualisation avec formation</td>
-      <td><a href="#">#</a></td>
-      <td><a href="#">#</a></td>
-    </tr>
-  </table>
+  <a routerLink="actualisation/suite">#</a>
 
-  <table style="margin: auto;">
+  <h2>Actualisation :</h2>
+  <table>
     <tr *ngFor="let model of modelsActua">
-        <td> Modeles d'actualisation</td>
-        <td>{{ model.nom }} {{ model.prenom }}</td>
+      <td> {{ model.type }} </td>
+      <td> <a routerLink="actualisation">=></a> </td>
     </tr>
   </table>
 </div>

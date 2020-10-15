@@ -9,23 +9,18 @@
         <div id="premierBloc">
           <p id="note-formulaire">Tous les champs sont obligatoires.</p>
           <div class="parallel-unit">
-            <div class="group-set">
-              <div class="groupeText">
-                <h3>Au {{date | date:'dd/MM/yyyy'}}</h3>
-              </div>
+            <form [formGroup]="actuaForm" (ngSubmit)="onSubmit()">
+              <div class="group-set">
+                <div class="groupeText">
+                  <h3>Au {{date | date:'dd/MM/yyyy'}}</h3>
+                </div>
 
-              <form [formGroup]="actuaForm" (ngSubmit)="onSubmit()">
                 <!-- Section travail -->
                 <div class="sousGroupe">
                   <div class="label">
-                    <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['travail'].errors">
-                      <p>Champs invalide (Lien d'aide en bas de page)</p>
-                      <p>Veuillez relire l'énoncé</p>
-                    </span>
                     <span>Avez-vous travaillé ou exercé une activité non salariée ?<br>
                       (créateur ou repreneur d’entreprise, entrepreneur...)</span>
                   </div>
-
                   <div class="radio-group">
                     <div class="radio" *ngFor="let option of listOption">
                       <label>
@@ -37,7 +32,7 @@
                   <span class="stop"></span>
                   <div *ngIf='visibiltyCas'>
                     <span>Heures travaillées dans le mois</span>
-                    <input type="text" name="txtTravail">
+                    <input aria-required="true" type="text" name="txtTravail">
                     <span>heures</span>
                     <span>Montant total de votre ou vos salaires bruts <b>réels ou estimés</b></span>
                     <input type="text">
@@ -48,10 +43,6 @@
                 <!-- Section stage -->
                 <div class="sousGroupe">
                   <div class="label">
-                    <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['stage'].errors">
-                      <p>Champs invalide (Lien d'aide en bas de page)</p>
-                      <p>Veuillez relire l'énoncé</p>
-                    </span>
                     <span>Avous-vous été en stage ?</span>
                   </div>
 
@@ -75,10 +66,6 @@
                 <!-- Section arrêt maladie -->
                 <div class="sousGroupe">
                   <div class="label">
-                    <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['arretMaladie'].errors">
-                      <p>Champs invalide (Lien d'aide en bas de page)</p>
-                      <p>Veuillez relire l'énoncé</p>
-                    </span>
                     <span>Avez-vous été en arrêt maladie ?</span>
                   </div>
 
@@ -102,10 +89,6 @@
                 <!-- Section pension retraite -->
                 <div class="sousGroupe">
                   <div class="label">
-                    <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['pensionRetraite'].errors">
-                      <p>Champs invalide (Lien d'aide en bas de page)</p>
-                      <p>Veuillez relire l'énoncé</p>
-                    </span>
                     <span>Percevez-vous une nouvelle pension retraite ?</span>
                   </div>
 
@@ -127,10 +110,6 @@
                 <!-- Section penstion d'invalidité -->
                 <div class="sousGroupe">
                   <div class="label">
-                    <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['pensionInvalidite'].errors">
-                      <p>Champs invalide (Lien d'aide en bas de page)</p>
-                      <p>Veuillez relire l'énoncé</p>
-                    </span>
                     <span>Percevez-vous une nouvelle pension
                       d'invalidité de 2ème ou 3ème catégorie ?</span>
                   </div>
@@ -153,10 +132,6 @@
                 <!-- Section recherche d'emploi -->
                 <div class="sousGroupe">
                   <div class="label">
-                    <span class="error-msg" *ngIf="isFormSubmitted && actuaForm.controls['rechercheEmploi'].errors">
-                      <p>Champs invalide (Lien d'aide en bas de page)</p>
-                      <p>Veuillez relire l'énoncé</p>
-                    </span>
                     <span>Etes-vous toujours à la recherche d'un emploi ?</span>
                   </div>
 
@@ -180,45 +155,18 @@
                     </div>
                   </div>
                 </div>
-
-              </form>
-            </div>
-            <div class="validation">
-              <ul>
-                <li><button type="reset">Abandonner</button></li>
-                <li>
-                  <span class="btnValiderFond">
-                    <button class="btnValider" type="submit">Valider</button>
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div id="secondBloc">
-          <div class="parallel-unit">
-            <div class="noheto">
-              <div class="centrageImage">
-                <div class="centrageTexte">
-                  <h4 class="picto">
-                    <img title alt src="../../assets/picto-information3137123175955441002.png">
-                    <span>Information</span>
-                  </h4>
-                  Afin de faciliter votre actualisation, vous pouvez vous munir des informations ou documents utiles à
-                  votre déclaration :
-                  <ul>
-                    <li>Bulletin de salaire</li>
-                    <li>Attestation employeur</li>
-                    <li>Justificatif de formation</li>
-                    <li>Notification de pension ...</li>
-                  </ul>
-                  <p>Dès la fin de votre actualisation, vous pourrez transmettre ces documents depuis votre espace
-                    personnel.</p>
-                  <a href="http://plml.fr/c/Ux33z" target="_blank">En savoir plus sur les changements de situations à
-                    déclarer</a>
-                </div>
               </div>
-            </div>
+              <div class="validation">
+                <ul>
+                  <li><button type="reset">Abandonner</button></li>
+                  <li>
+                    <span class="btnValiderFond">
+                      <button type="submit" class="btnValider">Valider</button>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </form>
           </div>
         </div>
       </div>

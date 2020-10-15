@@ -1,5 +1,6 @@
 export interface IModelActua {
   id: number;
+  type: string;
   nom: string;
   prenom: string;
   formation: boolean;
